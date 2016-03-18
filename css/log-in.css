@@ -1,0 +1,40 @@
+#formholder {
+	width: 600px;
+	height: 170px;
+	margin: auto;
+	margin-top: 100px;
+	border: 1px solid Grey;
+}
+
+#StudentForm {
+	display: block;
+	margin-right: 10px;
+}
+
+#TeacherForm {
+	display: none;
+	margin-right: 10px;
+}
+
+#pupilButton {
+	background-color: #006bb3;
+	color: white;
+}
+
+.submit {
+	border-radius: 5px;
+	background-color: Grey;
+	color: white;
+}
+
+input {
+	display: block;
+	margin: 5px;
+	width: 100%;
+	margin-top: 10px;
+	height: 30px;
+}
+
+form h4 {
+	margin: 5px;
+}
