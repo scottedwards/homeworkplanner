@@ -1,0 +1,65 @@
+#formholder {
+	width: 600px;
+	height: 170px;
+	margin: auto;
+	margin-top: 100px;
+	border: 2px solid black;
+	background-color: white;
+}
+
+.logo {
+	background-color: rgba(255,255,255,0.5);
+	text-align: center;
+	height: 110px;
+}
+
+.logo h1 {
+	color: #000000;
+	opacity: 1.0;
+	font-size: 90px;
+}
+
+body {
+	background-image: url("../img/desk.jpg");
+	background-size: cover;
+}
+
+#StudentForm {
+	display: block;
+	margin-right: 10px;
+}
+
+#TeacherForm {
+	display: none;
+	margin-right: 10px;
+}
+
+#pupilButton {
+	background-color: white;
+	color: #006bb3;
+}
+
+#teacherButton {
+	background-color: #006bb3;
+	color: white;
+	border-left: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+.submit {
+	border-radius: 5px;
+	background-color: Grey;
+	color: white;
+}
+
+input {
+	display: block;
+	margin: 5px;
+	width: 100%;
+	margin-top: 10px;
+	height: 30px;
+}
+
+form h4 {
+	margin: 5px;
+}
