@@ -1,3 +1,6 @@
+<div id="validationErrors">
+	<?php include("php/create_new_user.php"); ?>
+</div>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +46,11 @@
 <div class="logo">
 	<h1><b>Digital</b> Homework Planner</h1>
 </div>
+<style>
+	#formholder {
+		height: 333px;
+	}	
+</style>
 <div id="formholder">
 	<ul class="nav nav-tab nav-justified">
 		<li><a id="pupilButton" href="#StudentForm">Student</a></li>
@@ -51,24 +59,32 @@
 	
 	<div class="tab-content">
 		<div id="StudentForm">
-			<form method="post" action="php/user_login.php">
+			<form method="post">
+				<input type="text" name="name" id="name" placeholder="Name"></input>
 				<input type="text" name="username" id="username" placeholder="Pupil ID"></input>
 				<input type="password" name="password" id="password" placeholder="Password"></input>
-				<input type="submit" class="submit" value="Log In!" name="pupilSubmit"></input>
+				<input type="password" name="repeatedPassword" id="password" placeholder="Enter Password Again"></input>
+				<input type="text" name="year" id="year" placeholder="Year"></input>
+				<input type="text" name="email" id="email" placeholder="Email"></input>
+				<input type="submit" class="submit" value="Sign Up!" name="pupilSubmit"></input>
 			</form>
 		</div>
 
 		<div id="TeacherForm">
-			<form method="post" action="php/user_login.php">
+			<form method="post">
+				<input type="text" name="name" id="name" placeholder="Name"></input>
 				<input type="text" name="username" id="username" placeholder="Teacher ID"></input>
 				<input type="password" name="password" id="password" placeholder="Password"></input>
-				<input type="submit" class="submit" value="Log In!" name="teacherSubmit"></input>
+				<input type="password" name="repeatedPassword" id="password" placeholder="Enter Password Again"></input>
+				<input type="text" name="subject" id="subject" placeholder="Subject"></input>
+				<input type="text" name="email" id="email" placeholder="Email"></input>
+				<input type="submit" class="submit" value="Sign Up!" name="teacherSubmit"></input>
 			</form>
 		</div>
 	</div>
 
 	<div class="log-sign-btn">
-		<button><a href="sign_up.php">Sign Up</a></button>
+		<button><a href="log_in.php">Log In</a></button>
 	</div>
 	
 </div>

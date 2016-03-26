@@ -5,11 +5,11 @@ function generateNavBar($pageName) {
 	$type = $_SESSION['type'];
 
 	$navbar = "";
-	//$navbar .= "<nav class=\"navbar nav-pills\">";
+	$navbar .= "<div id=\"navbar\">";
 		$navbar .= "<div class=\"container\">";
 			$navbar .= "<div class=\"row\">";
 				$navbar .= "<div class=\"col-md-5\">";
-					$navbar .= "<ul class=\"nav nav-pills\">";
+					$navbar .= "<ul class=\"nav nav-pills orange\">";
 
 						if ($pageName == "homework_viewer") {
 							$navbar .= "<li class=\"active\"><a href=\"#\">Home</a></li>";
@@ -39,12 +39,12 @@ function generateNavBar($pageName) {
 				$navbar .= "</div>";
 
 				$navbar .= "<div class=\"col-md-2\">";
-					$navbar .= "<ul class=\"nav navbar-nav\">";
+					$navbar .= "<ul class=\"nav nav-pills\">";
 						$navbar .= "<li><a href=\"log_out.php\">Log Out</a></li>";
 				$navbar .= "</div>";
 			$navbar .= "</div>";
 		$navbar .= "</div>";
-	//$navbar .= "</nav>";
+	$navbar .= "</div>";
 
 	echo "$navbar";
 }
