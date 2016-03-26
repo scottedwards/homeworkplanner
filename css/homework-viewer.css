@@ -1,0 +1,54 @@
+table {
+	width: 80%;
+	margin: 0 auto;
+}
+
+table td {
+	border: 2px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+}
+
+table td:hover {
+	background-color: rgb(230, 230, 230);
+	padding-left: 15px;
+}
+
+table td p, table td button {
+	display: none;
+}
+
+.deadline-passed {
+	border-left: 2px solid rgb(200, 0, 0);
+}
+
+.deadline-ahead {
+	border-left: 2px solid rgb(0, 200, 0); 
+}
+
+.submit-homework {
+	background-color: #006bb3;
+	border-radius: 5px;
+	border: none;
+}
+
+.submit-homework a {
+	color: white;
+}
+
+.view-submition {
+	background-color: #006bb3;
+	border-radius: 5px;
+	border: none;
+}
+
+.view-submition a {
+	color: white;
+}
+
+h1, p{
+	text-align: center;
+	position: relative;
+	top: 200px;
+}
