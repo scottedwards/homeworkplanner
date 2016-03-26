@@ -2,7 +2,7 @@
 	width: 600px;
 	height: 170px;
 	margin: auto;
-	margin-top: 100px;
+	margin-top: 70px;
 	border: 2px solid black;
 	background-color: white;
 }
@@ -63,3 +63,35 @@ input {
 form h4 {
 	margin: 5px;
 }
+
+.log-sign-btn button {
+	width: 100%;
+	display: inline;
+	margin-top: 20px;
+	border-radius: 5px;
+	height: 40px;
+	background-color: orange;
+	border-color: orange;
+	color: white;
+}
+ 
+.log-sign-btn button a {
+	color: white;
+}
+
+.errors {
+	background-color: rgba(255,255,255,0.7);
+	position: absolute;
+	top: 250px;
+	left: 950px;
+	font-size: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 3px;
+}
+
+p {
+	margin-bottom: 19px;
+	margin-top: 9px;
+}
+

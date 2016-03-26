@@ -1,0 +1,15 @@
+#navbar {
+	padding: 5px;
+	border-bottom: 1px solid black;
+	background-color: rgb(230, 230, 230);
+	background-color: #006bb3;
+	margin-bottom: 50px;
+}
+
+li a {
+	background-color: white;
+}
+
+.orange li.active a {
+    background-color: orange;
+}
