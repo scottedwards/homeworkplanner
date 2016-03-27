@@ -1,0 +1,39 @@
+#search-classes {
+	width: 600px;
+	height: 70px;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 100px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#search-classes input, select {
+	width: 100%;
+}
+
+#search-classes input, #create-submit {
+	background-color: orange;
+	color: white;
+	border-radius: 5px;
+	border: none;
+	margin-top: 10px;
+}
+
+#create-class {
+	width: 600px;
+	height: 162px;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 150px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#create-class input {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 40px;
+}
+
+

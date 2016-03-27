@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/nav-bar.css">
-	<link rel="stylesheet" type="text/css" href="css/add-class.php">
+	<link rel="stylesheet" type="text/css" href="css/add-class.css">
 </head>
 <body>
 <?php 
@@ -45,7 +45,7 @@ if ($_SESSION['type'] ==  "pupil") {
 		$output .= "<form method=\"post\">";
 			$output .= "<input type=\"text\" name=\"name\" placeholder=\"Class Name\">";
 			$output .= "<input type=\"text\" name=\"classID\" placeholder=\"Class ID e.g. MathsYrX\">";
-			$output .= "<input type=\"submit\" name=\"createClass\" value=\"Create Class\">";
+			$output .= "<input type=\"submit\" name=\"createClass\" id=\"create-submit\" value=\"Create Class\">";
 		$output .= "</form>";
 	$output .= "</div>";
 	echo "$output";
