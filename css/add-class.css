@@ -1,0 +1,80 @@
+#search-classes {
+	width: 600px;
+	height: 70px;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 100px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#search-classes input, select {
+	width: 100%;
+}
+
+#search-classes input, #create-submit {
+	background-color: orange;
+	color: white;
+	border-radius: 5px;
+	border: none;
+	margin-top: 10px;
+}
+
+#create-class {
+	width: 600px;
+	height: 162px;
+	border: 1px solid black;
+	margin: auto;
+	margin-top: 150px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#create-class input {
+	width: 100%;
+	margin-bottom: 10px;
+	height: 40px;
+}
+
+#class-table {
+	width: 600px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#class-table tr {
+	border: 2px dotted black;
+}
+
+#class-table h3, #class-table h4 {
+	display: inline;
+}
+
+#class-table form input {
+	display: inline;
+	float: right;
+	background-color: orange;
+	border-radius: 5px;
+	border: none;
+	color: white;
+}
+
+#class-table td {
+	padding: 10px;
+}
+
+#submit-results {
+	width: 600px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#class-creation-feedback {
+	background-color: #006bb3;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+
