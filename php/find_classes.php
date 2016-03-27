@@ -51,11 +51,4 @@ foreach ($classList as $class) {
 
 echo "</table>";
 
-
-function myPrint($meh) {
-	echo "<pre>";
-	var_dump($meh);
-	echo "</pre>";
-}
-
 ?>

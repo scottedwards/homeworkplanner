@@ -113,7 +113,11 @@ if ($_POST) {
 	//email
 	if (!empty($email)) {
 		if (strlen($email <= 50)) {
-			$errmsg[] = "✓";
+			if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+				$errmsg[] = "✓";
+			} else {
+				$errmsg[] = "« Invalid email format!";
+			}			
 		} else {
 			$errmsg[] = "« Your email is too long!";
 		}
@@ -133,6 +137,7 @@ if ($_POST) {
 	}
 	$errors .= "</div>";
 
+	//if all the fields where fine then add the user to the database!
 	if ($formCorrect) {
 		if ($type == "pupil") {
 			$addNewUserSql = "INSERT INTO `pupil_table` (`username`, `password`, `name`, `email`, `year`) VALUES ('$username', '$hashedPassword', '$name', '$email', '$option')";

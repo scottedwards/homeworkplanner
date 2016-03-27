@@ -6,13 +6,12 @@ $username = $_SESSION['username'];
 $type = $_SESSION['type'];
 $conn = new mysqli("localhost", "root", "root", "homework_planner");
 
-	//get classes for the user
+//get classes for the user
 $classList = getClasses($username, $type, $conn);
-	//get homework for those classes
+//get homework for those classes
 $homeworkList = getHomeworks($classList, $conn);
 
-	//genereate table
-
+//genereate table
 if (count($homeworkList) > 0) {
 	echo "<table>";
 	foreach ($homeworkList as $homework) {
@@ -101,7 +100,7 @@ function getClassDetails($classID, $conn) {
 	return $class->fetch_assoc();
 }
 
-	//get all classes the student/teacher belongs to
+//get all classes the student/teacher belongs to
 function getClasses($username, $type, $conn) {
 	$tempArray = [];
 	if ($type == "pupil") {
