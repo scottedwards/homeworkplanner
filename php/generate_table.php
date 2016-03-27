@@ -135,10 +135,4 @@ function getHomeworks($classList, $conn) {
 
 	return $tempArray;
 }
-
-function myPrint($meh) {
-	echo "<pre>";
-	var_dump($meh);
-	echo "</pre>";
-}
 ?>

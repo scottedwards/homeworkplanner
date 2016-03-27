@@ -24,7 +24,7 @@ if ($_SESSION['type'] ==  "pupil") {
 	$output = "";
 	$output .= "<div id=\"search-classes\">";
 		$output .= "<form method=\"post\">";
-			$output .= "<select name=\"teacher\">";
+			$output .= "<select name=\"teacherID\">";
 			$output .= "<option value=\"\">Do not specify</option>";
 				//get teachers
 				$getTeachersSql = "SELECT `username`, `name` FROM `teacher_table`";
@@ -51,6 +51,18 @@ if ($_SESSION['type'] ==  "pupil") {
 	echo "$output";
 }
 ?>
+
+<div id="submit-results">
+	<?php 
+		if($_POST) {
+			if (isset($_POST['findClass'])) {
+				include("php/find_classes.php");
+			} elseif(isset($_POST['createClass'])) {
+				include("php/create_class.php");
+			}
+		}
+	?>
+</div>
 
 </body>
 </html>
