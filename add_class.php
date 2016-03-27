@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/nav-bar.css">
+	<link rel="stylesheet" type="text/css" href="css/add-class.php">
 </head>
 <body>
 <?php 
@@ -17,10 +18,39 @@
 	generateNavBar("add_class");
 ?>
 
-<div id="searchClass">
-	<form method="post">
-		
-	</form>
-</div>
+<?php
+$conn = new mysqli("localhost", "root", "root", "homework_planner");
+if ($_SESSION['type'] ==  "pupil") {
+	$output = "";
+	$output .= "<div id=\"search-classes\">";
+		$output .= "<form method=\"post\">";
+			$output .= "<select name=\"teacher\">";
+			$output .= "<option value=\"\">Do not specify</option>";
+				//get teachers
+				$getTeachersSql = "SELECT `username`, `name` FROM `teacher_table`";
+				$teachers = $conn->query($getTeachersSql);
+				while ($teacher = $teachers->fetch_assoc()) {
+					$teacherUsername = $teacher['username'];
+					$teacherName = $teacher['name'];
+					$output .= "<option value=\"$teacherUsername\">$teacherName</option>";
+				}
+			$output .= "</select>";
+			$output .= "<input type=\"submit\" name=\"findClass\" value=\"Find Classes\">";
+		$output .= "</form>";
+	$output .= "</div>";
+	echo "$output";
+} elseif ($_SESSION['type'] == "teacher") {
+	$output = "";
+	$output .= "<div id=\"create-class\">";
+		$output .= "<form method=\"post\">";
+			$output .= "<input type=\"text\" name=\"name\" placeholder=\"Class Name\">";
+			$output .= "<input type=\"text\" name=\"classID\" placeholder=\"Class ID e.g. MathsYrX\">";
+			$output .= "<input type=\"submit\" name=\"createClass\" value=\"Create Class\">";
+		$output .= "</form>";
+	$output .= "</div>";
+	echo "$output";
+}
+?>
+
 </body>
 </html>
