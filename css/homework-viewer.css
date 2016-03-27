@@ -47,7 +47,7 @@ table td p, table td button {
 	color: white;
 }
 
-h1, p{
+#no-homework {
 	text-align: center;
 	position: relative;
 	top: 200px;

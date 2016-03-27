@@ -75,7 +75,7 @@ if (count($homeworkList) > 0) {
 
 	echo "</table>";
 } else {
-	echo "<h1>You have no homework!</h1><p>You can add a class by navigating to the add class page above!</p>";
+	echo "<div id=\"no-homework\"><h1>You have no homework!</h1><p>You can add a class by navigating to the add class page above!</p></div>";
 }
 
 

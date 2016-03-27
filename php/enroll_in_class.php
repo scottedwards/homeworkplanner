@@ -1,4 +1,5 @@
 <?php 
+header("Location: ../homework_viewer.php");
 session_start();
 $pupilID = $_SESSION['username'];
 $conn = new mysqli("localhost", "root", "root", "homework_planner");

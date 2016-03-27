@@ -36,4 +36,31 @@
 	height: 40px;
 }
 
+#class-table {
+	width: 600px;
+	margin: auto;
+	margin-top: 20px;
+}
+
+#class-table tr {
+	border: 2px dotted black;
+}
+
+#class-table h3, #class-table h4 {
+	display: inline;
+}
+
+#class-table form input {
+	display: inline;
+	float: right;
+	background-color: orange;
+	border-radius: 5px;
+	border: none;
+	color: white;
+}
+
+#class-table td {
+	padding: 10px;
+}
+
 

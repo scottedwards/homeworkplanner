@@ -24,19 +24,24 @@ foreach ($classList as &$class) {
 	if ($results->num_rows > 0) {
 		unset($classList[$counter]);
 	}
+	//needed as otherwise in the next for each the last data value is corrupted
+	//after researching i found this is php bug #29992
+	unset($class);
 	$counter += 1;
 }
 
+$classList = array_values($classList);
 //print results
-echo "<table>";
+echo "<table id=\"class-table\">";
 foreach ($classList as $class) {
 	$className = $class['name'];
 	$classID = $class['class_id'];
+	$teacherID = $class['teacher_id'];
 
 	$newRow = "";
 	$newRow .= "<tr><td>";
 		$newRow .= "<form method=\"post\" action=\"php/enroll_in_class.php\">";
-			$newRow .= "<h3>$className</h3>";
+			$newRow .= "<p><h3>$className</h3> - <h4>$teacherID</h4>";
 			$newRow .= "<input type=\"hidden\" name=\"classID\" value=\"$classID\">";
 			$newRow .= "<input type=\"submit\" name=\"enroll\" value=\"Enroll\">";
 		$newRow .= "</form>";
