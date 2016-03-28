@@ -29,11 +29,7 @@ if (count($homeworkList) > 0) {
 		$resources = getResources($homeworkID, $conn);
 
 		$newRow = "";
-		if ($timeToGo >= 0) {
-			$newRow .= "<tr><td class=\"deadline-ahead\">";
-		} else {
-			$newRow .= "<tr><td class=\"deadline-passed\">";
-		}
+		$newRow .= "<tr><td>";
 		
 		$newRow .= "<h3 id=\"$homeworkID\">$subjectName - $title</h3>";
 		$newRow .= "<p><i>$teacherName</i></p>";
@@ -51,20 +47,40 @@ if (count($homeworkList) > 0) {
 			}
 			$newRow .= "</p>";
 		}
-		
-		//check if due date has passed or if user has submitted
-		if ($timeToGo >= 0) {
-			$newRow .= "<p><b>$dueDate</b></p>";
-			if ($type == "pupil") {
-				$newRow .= "<button class=\"submit-homework\"><a href=\"submit_homework.php?homeworkID=$homeworkID\">Submit</a>";
-			}			
-		} else {
-			$newRow .= "<p><b>Deadline has passed</b></p>";
-		}
 
-		if ($type == "teacher") {
+		//check if its a pupil and if they have submitted the homework
+		//else if they're a teacher say if the deadline has passed and give them a link where they can view submissions
+		if ($type == "pupil") {
+			$checkForSubmissionSql = "SELECT * FROM `homework_submissions` WHERE (`homework_id`, `pupil_id`) = ('$homeworkID', '$username')";
+			$results = $conn->query($checkForSubmissionSql);
+			if ($results->num_rows > 0) {
+				//pupils can only submit one file per homeowork so i dont need to loop through results
+				$submission = $results->fetch_assoc();
+				$mark = $submission['mark'];
+				if (empty($mark)) {
+					$newRow .= "<p>You have submitted this but the teacher <b>hasn't marked it</b></p>";
+				} else {
+					$newRow .= "<p>You got <b>$mark</b></p>";
+				}
+			} else {
+				//check if due date has passed
+				if ($timeToGo >= 0) {
+					$newRow .= "<p><b>$dueDate</b></p>";
+					$newRow .= "<button class=\"submit-homework\"><a href=\"submit_homework.php?homeworkID=$homeworkID\">Submit</a>";
+				} else {
+					$newRow .= "<p><b>Deadline has passed</b></p>";
+				}
+			}
+		} elseif ($type == "teacher") {
+			if ($timeToGo >= 0) {
+				$newRow .= "<p><b>$dueDate</b></p>";
+			} else {
+				$newRow .= "<p><b>Deadline has passed</b></p>";
+			}
 			$newRow .="<button class=\"view-submition\"><a href=\"view_submitions.php?homeworkID=$homeworkID\">View Submitions</a>";
 		}
+		
+		
 
 		$newRow .= "</td></tr>";
 

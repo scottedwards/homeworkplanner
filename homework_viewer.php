@@ -18,6 +18,10 @@
 	include("nav_bar.php"); 
 	generateNavBar("homework_viewer");
 ?>
+<div id="sort-buttons">
+	<button id="sortByTitle" onclick="sortBy('title')">Sort By Subject</button>
+	<button id="sortByDueDate" onclick="sortBy('date')">Sort By Subject</button>
+</div>
 <?php
 	include("php/generate_table.php");
 ?>

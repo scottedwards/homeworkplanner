@@ -1,6 +1,23 @@
+#sort-buttons {
+	display: inline;
+	margin-left: 130px;
+	margin-bottom: 40px;
+}
+
+#sort-buttons button {
+	border: none;
+	border-radius: 5px;
+	background-color: #006bb3;
+	color: white;
+	margin-right: 30px;
+	width: 150px;
+	height: 30px;
+}
+
 table {
 	width: 80%;
 	margin: 0 auto;
+	margin-top: 30px;
 }
 
 table td {
