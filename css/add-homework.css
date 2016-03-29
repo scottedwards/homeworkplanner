@@ -1,0 +1,32 @@
+form {
+	border: 1px solid black;
+	width: 400px;
+	margin: auto;
+	border-radius: 5px;
+	margin-top: 100px;
+	background-color: rgb(230, 230, 230);
+}
+
+form input, form textarea {
+	margin: 10px;
+	width: 95%;
+}
+
+#submit {
+	border-radius: 5px;
+	border: none;
+	background-color: orange;
+	color: white;
+}
+
+form p {
+	text-align: center;
+	display: inline-block;
+	width: 30%;
+}
+
+form select {
+	width: 30%;
+	display: inline-block;
+	margin-left: 10px;
+}
