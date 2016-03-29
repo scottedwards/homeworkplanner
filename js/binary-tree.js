@@ -6,16 +6,17 @@ function Node(value) {
 
 function BinaryTree() {
 	this.root = null;
-	this.valuePlaced = false;
+	this.orderedList = [];
 
-	function addNode(value) {
+	this.addNode = function (value) {
 		this.valuePlaced = false;
 		if (this.root == null) {
 			this.root = new Node(value);
 		} else {
-			var this.currentNode = this.root;
-			while (!valuePlaced) {
-				if (value < this.currentNode.value) {
+			this.currentNode = this.root;
+			this.valuePlaced = false;
+			while (!this.valuePlaced) {
+				if (value[1] < this.currentNode.value[1]) {
 					if (this.currentNode.leftChild == null) {
 						this.currentNode.leftChild = new Node(value);
 						this.valuePlaced = true;
@@ -34,17 +35,17 @@ function BinaryTree() {
 		}
 	}
 
-	function recursiveSearch(node) {
-		var this.orderedList = [];
+	function recursiveSearch(node, list) {
 		if (node != null) {
-			recursiveSearch(node.leftChild);
-			this.orderedList.push(node.value);
-			recursiveSearch(node.rightChild);
+			recursiveSearch(node.leftChild, list);
+			list.push(node.value);
+			recursiveSearch(node.rightChild, list);
 		}
-		return this.orderedList;
 	}
 
-	function getOrderedValues() {
-		return recursiveSearch(this.root);
+	this.getOrderedValues = function() {
+		this.orderedList = [];
+		recursiveSearch(this.root, this.orderedList);
+		return this.orderedList;
 	}
 }

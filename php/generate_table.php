@@ -10,10 +10,14 @@ $conn = new mysqli("localhost", "root", "root", "homework_planner");
 $classList = getClasses($username, $type, $conn);
 //get homework for those classes
 $homeworkList = getHomeworks($classList, $conn);
+//create an array that will store the uncompleted homework
+$dueHomeworkTable = [];
+//create an array that will store the completed and passed homework
+$passedHomeworkTable = [];
 
 //genereate table
 if (count($homeworkList) > 0) {
-	echo "<table>";
+	//echo "<table id=\"homework-table\">";
 	foreach ($homeworkList as $homework) {
 		$class = getClassDetails($homework['class_id'], $conn);
 		$teacher = getTeacherDetails($class['teacher_id'], $conn);
@@ -28,8 +32,11 @@ if (count($homeworkList) > 0) {
 
 		$resources = getResources($homeworkID, $conn);
 
+		$hasCompleted = false;
+
+		//start creating the row
 		$newRow = "";
-		$newRow .= "<tr><td>";
+		$newRow .= "<tr><td dueDate=\"$dueDate\">";
 		
 		$newRow .= "<h3 id=\"$homeworkID\">$subjectName - $title</h3>";
 		$newRow .= "<p><i>$teacherName</i></p>";
@@ -40,7 +47,8 @@ if (count($homeworkList) > 0) {
 			$newRow .= "<p>";
 			foreach ($resources as $resource) {
 				$path = $resource;
-				$fileName = (explode("/", $path))[5];
+				$splitPath = explode("/", $path);
+				$fileName = $splitPath[count($splitPath) - 1];
 				$newRow .= " - ";
 				$newRow .= "<a href=\"$path\" download>$fileName</a>";
 				$newRow .= "<br>";
@@ -54,6 +62,8 @@ if (count($homeworkList) > 0) {
 			$checkForSubmissionSql = "SELECT * FROM `homework_submissions` WHERE (`homework_id`, `pupil_id`) = ('$homeworkID', '$username')";
 			$results = $conn->query($checkForSubmissionSql);
 			if ($results->num_rows > 0) {
+				//set hasCompleted to true so we know to put the homework in the completed table
+				$hasCompleted = true;
 				//pupils can only submit one file per homeowork so i dont need to loop through results
 				$submission = $results->fetch_assoc();
 				$mark = $submission['mark'];
@@ -66,8 +76,9 @@ if (count($homeworkList) > 0) {
 				//check if due date has passed
 				if ($timeToGo >= 0) {
 					$newRow .= "<p><b>$dueDate</b></p>";
-					$newRow .= "<button class=\"submit-homework\"><a href=\"submit_homework.php?homeworkID=$homeworkID\">Submit</a>";
+					$newRow .= "<button class=\"submit-homework\"><a href=\"submit_homework.php?homeworkID=$homeworkID\">Submit</a></button>";
 				} else {
+					$hasCompleted = true;
 					$newRow .= "<p><b>Deadline has passed</b></p>";
 				}
 			}
@@ -77,18 +88,55 @@ if (count($homeworkList) > 0) {
 			} else {
 				$newRow .= "<p><b>Deadline has passed</b></p>";
 			}
-			$newRow .="<button class=\"view-submition\"><a href=\"view_submitions.php?homeworkID=$homeworkID\">View Submitions</a>";
+			$hasCompleted = true;
+			$newRow .="<button class=\"view-submition\"><a href=\"view_submitions.php?homeworkID=$homeworkID\">View Submitions</a></button>";
 		}
 		
 		
 
 		$newRow .= "</td></tr>";
 
-
-		echo "$newRow";
+		if ($hasCompleted) {
+			$passedHomeworkTable[] = $newRow;
+		} else {
+			$dueHomeworkTable[] = $newRow;
+		}
 	}
 
-	echo "</table>";
+	//echo the tables
+	echo "<div class=\"container\">";
+		echo "<div class=\"row\">";
+
+			echo "<div class=\"col-md-6\">";
+			echo "<h2>Due in:</h2>";
+				echo "<table id=\"due-in\">";
+					if (count($dueHomeworkTable) > 0) {
+						foreach ($dueHomeworkTable as $row) {
+							echo "$row";
+						}
+					} else {
+						echo "No homework due in!";
+					}
+				echo "</table>";
+			echo "</div>";
+		
+			echo "<div class=\"col-md-6\">";
+				echo "<h2>Completed or deadline passed:</h2>";
+				echo "<table id=\"passed-table\">";
+					if (count($passedHomeworkTable) > 0) {
+						foreach ($passedHomeworkTable as $row) {
+							echo "$row";
+						}
+					} else {
+						echo "No homework that has passed its due date!";
+					}
+				echo "</table>";
+			echo "</div>";
+		echo "</div>";
+	echo "</div>";
+	
+
+	//echo "</table>";
 } else {
 	echo "<div id=\"no-homework\"><h1>You have no homework!</h1><p>You can add a class by navigating to the add class page above!</p></div>";
 }
@@ -149,5 +197,11 @@ function getHomeworks($classList, $conn) {
 	}
 
 	return $tempArray;
+}
+
+function myPrint($meh) {
+	echo "<pre>";
+	var_dump($meh);
+	echo "</pre>";
 }
 ?>

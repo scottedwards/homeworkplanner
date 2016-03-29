@@ -12,6 +12,9 @@
 	<script type="text/javascript" src="js/toggle-table-data.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/homework-viewer.css">
 	<link rel="stylesheet" type="text/css" href="css/nav-bar.css">
+
+	<script type="text/javascript" src="js/binary-tree.js"></script>
+	<script type="text/javascript" src="js/sort-table.js"></script>
 </head>
 <body>
 <?php 
@@ -20,10 +23,11 @@
 ?>
 <div id="sort-buttons">
 	<button id="sortByTitle" onclick="sortBy('title')">Sort By Subject</button>
-	<button id="sortByDueDate" onclick="sortBy('date')">Sort By Subject</button>
+	<button id="sortByDueDate" onclick="sortBy('date')">Sort By Due Date</button>
 </div>
 <?php
 	include("php/generate_table.php");
 ?>
+</div>
 </body>
 </html>
