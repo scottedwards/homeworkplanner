@@ -1,5 +1,5 @@
 #sort-buttons {
-	width: 90%;
+	width: 70%;
 	margin: auto;
 }
 
@@ -12,7 +12,12 @@
 	margin-left: 30px;
 	width: 150px;
 	height: 30px;
-	width: 44%;
+	width: 42%;
+}
+
+.table-holder {
+	width: 70%;
+	margin: auto;
 }
 
 table {

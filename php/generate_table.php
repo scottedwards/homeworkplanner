@@ -104,37 +104,32 @@ if (count($homeworkList) > 0) {
 	}
 
 	//echo the tables
-	echo "<div class=\"container\">";
-		echo "<div class=\"row\">";
 
-			echo "<div class=\"col-md-6\">";
-			echo "<h2>Due in:</h2>";
-				echo "<table id=\"due-in\">";
-					if (count($dueHomeworkTable) > 0) {
-						foreach ($dueHomeworkTable as $row) {
-							echo "$row";
-						}
-					} else {
-						echo "No homework due in!";
-					}
-				echo "</table>";
-			echo "</div>";
-		
-			echo "<div class=\"col-md-6\">";
-				echo "<h2>Completed or deadline passed:</h2>";
-				echo "<table id=\"passed-table\">";
-					if (count($passedHomeworkTable) > 0) {
-						foreach ($passedHomeworkTable as $row) {
-							echo "$row";
-						}
-					} else {
-						echo "No homework that has passed its due date!";
-					}
-				echo "</table>";
-			echo "</div>";
-		echo "</div>";
+	echo "<div class=\"table-holder\">";
+		echo "<h2>Due in:</h2>";
+		echo "<table id=\"due-in\">";
+		if (count($dueHomeworkTable) > 0) {
+			foreach ($dueHomeworkTable as $row) {
+				echo "$row";
+			}
+		} else {
+			echo "No homework due in!";
+		}
+		echo "</table>";
 	echo "</div>";
 	
+	echo "<div class=\"table-holder\">";
+		echo "<h2>Completed or deadline passed:</h2>";
+		echo "<table id=\"passed-table\">";
+			if (count($passedHomeworkTable) > 0) {
+				foreach ($passedHomeworkTable as $row) {
+					echo "$row";
+				}
+			} else {
+				echo "No homework that has passed its due date!";
+			}
+		echo "</table>";
+	echo "</div>";
 
 	//echo "</table>";
 } else {
