@@ -13,3 +13,12 @@ li a {
 .orange li.active a {
     background-color: orange;
 }
+
+#username-box {
+	text-align: center;
+	color: white;
+}
+
+#log-out {
+	float: right;
+}

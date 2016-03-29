@@ -8,7 +8,7 @@ function generateNavBar($pageName) {
 	$navbar .= "<div id=\"navbar\">";
 		$navbar .= "<div class=\"container\">";
 			$navbar .= "<div class=\"row\">";
-				$navbar .= "<div class=\"col-md-5\">";
+				$navbar .= "<div class=\"col-md-3\">";
 					$navbar .= "<ul class=\"nav nav-pills orange\">";
 
 						if ($pageName == "homework_viewer") {
@@ -34,13 +34,13 @@ function generateNavBar($pageName) {
 					$navbar .= "</ul>";
 				$navbar .= "</div>";
 
-				$navbar .= "<div class=\"col-md-5\">";
+				$navbar .= "<div id=\"username-box\" class=\"col-md-6\">";
 					$navbar .= "<h4>$user</h4>";
 				$navbar .= "</div>";
 
-				$navbar .= "<div class=\"col-md-2\">";
+				$navbar .= "<div class=\"col-md-3\">";
 					$navbar .= "<ul class=\"nav nav-pills\">";
-						$navbar .= "<li><a href=\"log_out.php\">Log Out</a></li>";
+						$navbar .= "<li id=\"log-out\"><a href=\"log_out.php\">Log Out</a></li>";
 				$navbar .= "</div>";
 			$navbar .= "</div>";
 		$navbar .= "</div>";
