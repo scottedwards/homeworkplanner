@@ -113,7 +113,7 @@ if (count($homeworkList) > 0) {
 				echo "$row";
 			}
 		} else {
-			echo "No homework due in!";
+			echo "<h4>No homework due in!</h4>";
 		}
 		echo "</table>";
 	echo "</div>";

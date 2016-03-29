@@ -73,3 +73,7 @@ table td p, table td button {
 	position: relative;
 	top: 200px;
 }
+
+h4 {
+	margin-left: 5px;
+}
