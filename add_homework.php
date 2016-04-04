@@ -61,6 +61,9 @@ session_start();
 		<input type="file" name="filesToUpload[]" multiple>
 		<input type="submit" name="createHomework" id="submit" value="Create Homework"></input>
 	</form>
+	<div id="form-msgs">
+		<?php include "php/create_homework.php"; ?>
+	</div>
 </div>
 </body>
 </html>
