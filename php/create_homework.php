@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if ($_POST) {
 	$title = $_POST['title'];
 	$classID = $_POST['classID'];
@@ -45,7 +47,9 @@ if ($_POST) {
 	//check to make sure the date is valid, i.e no 31st of february, and that it's not in the past
 	if (checkdate($month, $day, $year)) {
 		$timeDifference = strtotime("$year-$month-$day") - time();
-		if ($timeDifference < 0) {
+		if ($timeDifference > 0) {
+			$dueDate = "$year-$month-$day";
+		} else {
 			$errmsg[] = "This date is in the past!";
 		}
 	} else {
@@ -53,15 +57,23 @@ if ($_POST) {
 	}
 
 	
-
+echo "<table>";
 	if (count($errmsg) > 0) {
 		foreach ($errmsg as $error) {
-			echo "$error<br>";
+			echo "<tr><td>$error<br></td></tr>";
 		}
 	} else {
+		$conn = new mysqli("localhost", "root", "root", "homework_planner");
+		$homeworkID = "$classID" .time();
+		//add homework to database
+		$addHomeworkSql = "INSERT INTO `homework_table` (`homework_id`, `class_id`, `title`, `description`, `due_date`) VALUES ('$homeworkID', '$classID', '$title', '$description', '$dueDate')";
+		$conn->query($addHomeworkSql);
+		//upload the files
 		include("file_handler.php");
-		uploadFiles($files);	
+		uploadFiles($files, "resources", $homeworkID);
+
+		echo "<tr><td>Homework Created!</td></tr>";
 	}
-	
+echo "</table>";
 }
 ?>

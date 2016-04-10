@@ -1,5 +1,5 @@
 <?php 
-function uploadFiles($files, $dir) {
+function uploadFiles($files, $dir, $homeworkID) {
 	// Count the number of uploaded files in array
 	$total = count($files['name']);
 
@@ -16,15 +16,48 @@ function uploadFiles($files, $dir) {
 			//DO THIS NEXT
 
     		//Setup our new file path
-			$newFilePath = "./homework_$dir/" . $_FILES['upload']['name'][$i];
+    		//file exists needs a file path on a hard drive not a URL so $_SERVER['DOCUM.... is used to get
+    		//current root directory
+			$newFilePath = $_SERVER['DOCUMENT_ROOT'] . "/homeworkplanner/homework_$dir/";
+			$newFilePath .= pathinfo($files['name'][$i], PATHINFO_FILENAME) ."(0).";
+			$newFilePath .= pathinfo($files['name'][$i], PATHINFO_EXTENSION);
 
-    		//Upload the file into the temp dir
-			if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+			findUniqueName($newFilePath, 0);
 
-      		//Handle other code here
+    		//'Upload' the file from the temp directory to the directory we want to save it in
+    		move_uploaded_file($tmpFilePath, $newFilePath);
+    		
+    		$path = str_replace($_SERVER['DOCUMENT_ROOT'], "http://localhost:8888", $newFilePath);
 
-			}
+    		//now add the file to the homework planner database in the correct table
+    		$conn = new mysqli("localhost", "root", "root", "homework_planner");
+    		if ($dir == "resources") {
+    			$addResourceSql = "INSERT INTO `homework_resources` (`homework_id`, `path`) VALUES ('$homeworkID', '$path')";
+    			$conn->query($addResourceSql);
+    		} elseif ($dir == "submissions") {
+    			//DO THE REST
+    		}
 		}
+	}
+}
+
+//the file name parameter is passed by reference as for some reason even though I got the function to work, it would return
+//nothing so I couldnt write:
+// $newFilePath = findUniqueName($newFilePath, 0);
+// this meant that in order to change the variable $newFilePath I had to pass it by reference so that any changes made to the 
+//fileName in the function would affect the variable passed as the parameter outside of the functions scope
+function findUniqueName(&$fileName, $counter) {
+	//check if the file exists, if it does make the number added on the end of the file
+	//increase and call this subroutine again. If it doesnt exist then output it as a valid filename
+	if (file_exists($fileName)) {
+		//get what the previous number added to the file wouldve been
+		$previousNumber = "($counter)";
+		//create a new one
+		$counter += 1;
+		$newNumber = "($counter)";
+		//now swap the old number with the new one
+		$fileName = str_replace($previousNumber, $newNumber, $fileName);
+		findUniqueName($fileName, $counter);
 	}
 }
 ?>

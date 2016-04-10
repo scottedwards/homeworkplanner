@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 $username = $_SESSION['username'];
 $type = $_SESSION['type'];
 $conn = new mysqli("localhost", "root", "root", "homework_planner");
