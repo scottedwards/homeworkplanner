@@ -1,5 +1,5 @@
 <?php 
-function uploadFiles($files, $dir, $homeworkID) {
+function uploadFiles($files, $dir, $homeworkID, $username) {
 	// Count the number of uploaded files in array
 	$total = count($files['name']);
 
@@ -32,10 +32,17 @@ function uploadFiles($files, $dir, $homeworkID) {
     		//now add the file to the homework planner database in the correct table
     		$conn = new mysqli("localhost", "root", "root", "homework_planner");
     		if ($dir == "resources") {
-    			$addResourceSql = "INSERT INTO `homework_resources` (`homework_id`, `path`) VALUES ('$homeworkID', '$path')";
+    			$addResourceSql = "INSERT INTO `homework_resources`
+    				(`homework_id`, `path`) 
+    				VALUES 
+    				('$homeworkID', '$path')";
     			$conn->query($addResourceSql);
     		} elseif ($dir == "submissions") {
-    			//DO THE REST
+    			$addSubmissionSql = "INSERT INTO `homework_submissions`
+    				(`homework_id`, `pupil_id`, `path`, `mark`)
+    				VALUES
+    				('$homeworkID', '$username', '$path', '')";
+    			$conn->query($addSubmissionSql);
     		}
 		}
 	}

@@ -83,10 +83,10 @@ if (count($homeworkList) > 0) {
 			if ($timeToGo >= 0) {
 				$newRow .= "<p><b>$dueDate</b></p>";
 			} else {
+				$hasCompleted = true;
 				$newRow .= "<p><b>Deadline has passed</b></p>";
 			}
-			$hasCompleted = true;
-			$newRow .="<button class=\"view-submition\"><a href=\"view_submitions.php?homeworkID=$homeworkID\">View Submitions</a></button>";
+			$newRow .="<button class=\"view-submition\"><a href=\"view_submissions.php?homeworkID=$homeworkID\">View Submissions</a></button>";
 		}
 		
 		

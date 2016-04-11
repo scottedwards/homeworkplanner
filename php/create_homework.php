@@ -70,7 +70,7 @@ echo "<table>";
 		$conn->query($addHomeworkSql);
 		//upload the files
 		include("file_handler.php");
-		uploadFiles($files, "resources", $homeworkID);
+		uploadFiles($files, "resources", $homeworkID, $_SESSION['username']);
 
 		echo "<tr><td>Homework Created!</td></tr>";
 	}

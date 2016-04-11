@@ -1,0 +1,33 @@
+table {
+	width: 1000px;
+	margin: auto;
+}
+table tr h4, table tr input, table tr p {
+	display: inline;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+table tr input {
+	float: right;
+}
+tr {
+	border: 2px dotted black;
+	height: 40px;
+}
+
+#submit {
+	border: none;
+	border-radius: 5px;
+	background-color: orange;
+	color: white;
+}
+
+#mark {
+	width: 50px;
+	text-align: center;
+}
+
+#errors {
+	text-align: center;
+}
