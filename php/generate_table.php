@@ -86,7 +86,7 @@ if (count($homeworkList) > 0) {
 				$hasCompleted = true;
 				$newRow .= "<p><b>Deadline has passed</b></p>";
 			}
-			$newRow .="<button class=\"view-submition\"><a href=\"view_submissions.php?homeworkID=$homeworkID\">View Submissions</a></button>";
+			$newRow .="<button class=\"view-submission\"><a href=\"view_submissions.php?homeworkID=$homeworkID\">View Submissions</a></button>";
 		}
 		
 		

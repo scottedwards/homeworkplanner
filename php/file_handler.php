@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 function uploadFiles($files, $dir, $homeworkID, $username) {
 	// Count the number of uploaded files in array
 	$total = count($files['name']);
@@ -27,6 +29,9 @@ function uploadFiles($files, $dir, $homeworkID, $username) {
     		//'Upload' the file from the temp directory to the directory we want to save it in
     		move_uploaded_file($tmpFilePath, $newFilePath);
     		
+    		//replace all single quotes in the path with double qoutes to escape them from the query
+    		//otherwise sql will interpret any apostraphies as the end of a data stream
+    		$newFilePath = str_replace("'", "''", $newFilePath);
     		$path = str_replace($_SERVER['DOCUMENT_ROOT'], "http://localhost:8888", $newFilePath);
 
     		//now add the file to the homework planner database in the correct table
