@@ -1,7 +1,4 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 $username = $_SESSION['username'];
 $type = $_SESSION['type'];
 $conn = new mysqli("localhost", "root", "root", "homework_planner");
@@ -86,10 +83,10 @@ if (count($homeworkList) > 0) {
 			if ($timeToGo >= 0) {
 				$newRow .= "<p><b>$dueDate</b></p>";
 			} else {
+				$hasCompleted = true;
 				$newRow .= "<p><b>Deadline has passed</b></p>";
 			}
-			$hasCompleted = true;
-			$newRow .="<button class=\"view-submition\"><a href=\"view_submitions.php?homeworkID=$homeworkID\">View Submitions</a></button>";
+			$newRow .="<button class=\"view-submission\"><a href=\"view_submissions.php?homeworkID=$homeworkID\">View Submissions</a></button>";
 		}
 		
 		
@@ -192,11 +189,5 @@ function getHomeworks($classList, $conn) {
 	}
 
 	return $tempArray;
-}
-
-function myPrint($meh) {
-	echo "<pre>";
-	var_dump($meh);
-	echo "</pre>";
 }
 ?>
