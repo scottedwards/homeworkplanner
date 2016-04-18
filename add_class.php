@@ -27,7 +27,7 @@ if ($_SESSION['type'] ==  "pupil") {
 			$output .= "<select name=\"teacherID\">";
 			$output .= "<option value=\"\">Do not specify</option>";
 				//get teachers
-				$getTeachersSql = "SELECT `username`, `name` FROM `teacher_table`";
+				$getTeachersSql = "SELECT * FROM `teacher_table`";
 				$teachers = $conn->query($getTeachersSql);
 				while ($teacher = $teachers->fetch_assoc()) {
 					$teacherUsername = $teacher['username'];

@@ -19,7 +19,7 @@ if ($_POST) {
 	if (!empty($classID)) {
 		if (ctype_alnum($classID)) {
 			if (strlen($classID <= 15)) {
-					//check to see if class id exists
+				//check to see if class id exists
 				$checkClassIDSql = "SELECT * FROM `class_table` WHERE (`class_id`) = ('$classID')";
 				$results = $conn->query($checkClassIDSql);
 				if ($results->num_rows > 0) {
