@@ -1,6 +1,4 @@
 <?php 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 function uploadFiles($files, $dir, $homeworkID, $username) {
 	// Count the number of uploaded files in array
 	$total = count($files['name']);
@@ -8,6 +6,8 @@ function uploadFiles($files, $dir, $homeworkID, $username) {
 	// Loop through each file
 	for($i=0; $i<$total; $i++) {
 		//Get the temp file path
+		//this path is where the file is stored temporarily 
+		//until it is either uploaded to the server or rejected
 		$tmpFilePath = $files['tmp_name'][$i];
 
 	  	//Make sure we have a filepath
@@ -53,10 +53,10 @@ function uploadFiles($files, $dir, $homeworkID, $username) {
 	}
 }
 
-//the file name parameter is passed by reference as for some reason even though I got the function to work, it would return
+//the file name parameter is passed by reference as for some reason even though I got the function to work by value, it would return
 //nothing so I couldnt write:
-// $newFilePath = findUniqueName($newFilePath, 0);
-// this meant that in order to change the variable $newFilePath I had to pass it by reference so that any changes made to the 
+// ** $newFilePath = findUniqueName($newFilePath, 0); **
+//this meant that in order to change the variable $newFilePath I had to pass it by reference so that any changes made to the 
 //fileName in the function would affect the variable passed as the parameter outside of the functions scope
 function findUniqueName(&$fileName, $counter) {
 	//check if the file exists, if it does make the number added on the end of the file

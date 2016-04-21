@@ -10,6 +10,8 @@
 	<link rel="stylesheet" type="text/css" href="css/log-in.css">
 
 	<script type="text/javascript">
+	//this is the code to switch tabs
+	//it works by making one <div> visible while the other goes invisible
 	$(document).ready(function() {
 		var currentlyViewing = "";
   		$("a").click(function() {
@@ -18,18 +20,20 @@
 			$(this).css("color", "#006bb3");
 			$(this).css("border", "none");
     		if (targetDivID == "#StudentForm") {
+    			//switch the styling methods
     			$(targetDivID).css("display", "block");
     			$("#TeacherForm").css("display", "none");
-
+    			//the rest of tis condition is just styling
     			$("#teacherButton").css("background-color", "#006bb3");
     			$("#teacherButton").css("color", "white");
 
     			$("#teacherButton").css("border-bottom", "2px solid black");
     			$("#teacherButton").css("border-left", "2px solid black");
    			} else {
+   				//switch the styling methos=ds
       			$(targetDivID).css("display", "block");
     			$("#StudentForm").css("display", "none");
-
+    			//the rest of this is just styling
     			$("#pupilButton").css("background-color", "#006bb3");
     			$("#pupilButton").css("color", "white");
 

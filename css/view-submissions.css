@@ -2,7 +2,7 @@ table {
 	width: 1000px;
 	margin: auto;
 }
-table tr h4, table tr input, table tr p {
+table tr h3, table tr input, table tr p {
 	display: inline;
 	margin-right: 10px;
 	margin-left: 10px;
@@ -30,4 +30,22 @@ tr {
 
 #errors {
 	text-align: center;
+}
+
+#sort-buttons {
+	width: 70%;
+	margin: auto;
+	margin-bottom: 20px;
+}
+
+#sort-buttons button {
+	border: none;
+	border-radius: 5px;
+	background-color: orange;
+	color: white;
+	margin-right: 30px;
+	margin-left: 30px;
+	width: 100px;
+	height: 30px;
+	width: 42%;
 }

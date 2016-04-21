@@ -21,10 +21,15 @@ session_start();
 		<select name="classID">
 		<option value="">Select a class:</option>
 			<?php 
+			//get username of the teacher
 			$username = $_SESSION['username'];
+			//initialise new database connection
 			$conn = new mysqli("localhost", "root", "root", "homework_planner");
 			$getClassesSql= "SELECT `class_id` FROM `class_table` WHERE (`teacher_id`) = ('$username')";
+			//gets all classes that the teacher has
 			$classes = $conn->query($getClassesSql);
+			//for each class the teacher has, output an option 
+			//with that class' ID as its value
 			while ($class = $classes->fetch_assoc()) {
 				$classID = $class['class_id'];
 				$newOption = "<option value=\"$classID\">$classID</option>";
@@ -53,7 +58,8 @@ session_start();
 		echo "<p>Year</p>";
 		echo "<p>Month</p>";
 		echo "<p>Day</p>";
-
+		//date() is a PHP function that you can use with multiple parameters to get various time related information
+		//here I have used the parameter "Y" to get the current year, and then use it again to get next years year
 		createSelect("year", date("Y"), date("Y") + 1);
 		createSelect("month", 1, 12);
 		createSelect("day", 1, 31);
