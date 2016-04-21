@@ -8,6 +8,10 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/nav-bar.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/view-submissions.css">
+	<script type="text/javascript" src="js/jquery-2.2.1.min.js"></script>
+	
+	<script type="text/javascript" src="js/binary-tree.js"></script>
+	<script type="text/javascript" src="js/sort-table.js"></script>
 </head>
 <body>
 <?php
