@@ -22,7 +22,7 @@
 	generateNavBar("homework_viewer");
 ?>
 <div id="sort-buttons">
-	<button id="sortByTitle" onclick="sortBy('title')">Sort By Subject</button>
+	<button id="sortByTitle" onclick="sortBy('title')">Sort By Title</button>
 	<button id="sortByDueDate" onclick="sortBy('date')">Sort By Due Date</button>
 </div>
 <?php

@@ -49,10 +49,13 @@ function sortBy(arg) {
 			var row = $("#" + sortedList[i][0]).closest("tr");
 			//get the row that is before the current row in the sorting order
 			var rowAbove = $("#" + sortedList[i-1][0]).closest("tr");
-			//place the current row after the row that precedes it in the orderedList
-			row.insertAfter(rowAbove);
+			//check what the sort data is
+			if ($(this).attr("id") == "passed-table" && arg == "date") {
+				row.insertBefore(rowAbove);
+			} else {
+				row.insertAfter(rowAbove);
+			}
 		}
-
 	});
 }
 

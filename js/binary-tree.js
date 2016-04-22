@@ -22,7 +22,7 @@ function BinaryTree() {
 			this.valuePlaced = false;
 			while (!this.valuePlaced) {
 				//if the parameter value is less than that of the current node's value it goes to the left side of it
-				if (value[1] < this.currentNode.value[1]) {
+				if (value[1] <= this.currentNode.value[1]) {
 					//if the current node does not have a left child make its left child equal to the parameter value
 					//and set valuePlaced to true so the loop does not happpen again
 					if (this.currentNode.leftChild == null) {
