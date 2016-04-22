@@ -37,7 +37,8 @@ foreach ($register as $row) {
 	//start building the HTML code for the row
 	$newRow = "<tr><td>";
 	$newRow .= "<form method=\"post\">";
-	//output a heading with the pupil's name
+	//output a heading with the pupil's name and make it's ID equal to the pupil's ID
+	//this will be used to identify the row when sorting
 	$newRow .= "<h3 id=\"$pupilID\">$pupilName</h3>";
 	//set hidden input types so that whe the teacher wants to update the marks the PHP script will have
 	//all the relevant information

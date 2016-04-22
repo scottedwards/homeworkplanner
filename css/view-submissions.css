@@ -49,3 +49,9 @@ tr {
 	height: 30px;
 	width: 42%;
 }
+
+#homeworkTitle {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 50px;
+}

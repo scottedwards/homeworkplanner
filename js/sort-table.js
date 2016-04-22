@@ -23,14 +23,12 @@ function addRowToTree(row, arg, sortingTree) {
 		//add the minus sign in from of mark so that it sorts it in reverse order (from highest mark to lowest mark)
 		//this will make the -1 from above to +1 and so these pupils will have the greatest values, and so will be
 		//at the end of the sorted list
-		console.log([rowID, -mark]);
 		sortingTree.addNode([rowID, -mark]);
 	}
 }
 
 function sortBy(arg) {
 	//loop through each table in the page
-	console.log("Sorting by..." + arg);
 	$("table").each(function() {
 		var sortingTree = new BinaryTree();
 		//loop through each row for the current table in the loop
