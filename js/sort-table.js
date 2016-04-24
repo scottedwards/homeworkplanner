@@ -49,7 +49,8 @@ function sortBy(arg) {
 			var row = $("#" + sortedList[i][0]).closest("tr");
 			//get the row that is before the current row in the sorting order
 			var rowAbove = $("#" + sortedList[i-1][0]).closest("tr");
-			//check what the sort data is
+			//if the table that's in the loop is the passed-table and the sort data is the date
+			//then sort it backwards by using insertBefore instead of insertAfter
 			if ($(this).attr("id") == "passed-table" && arg == "date") {
 				row.insertBefore(rowAbove);
 			} else {

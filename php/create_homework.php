@@ -73,8 +73,10 @@ echo "<table>";
 		//generate a new homework ID by appending the classID to the current UNIX time stamp
 		//this is the number of elapsed seconds since 1st Jan 1970 00:00:00 GMT or something
 		$homeworkID = "$classID" .time();
+		//what the line below does is it replaces any single appostraphies with double apotraphes so the sql query can "escape" them
+		$correctedDescription = str_replace("'", "''", $description);
 		//add homework to database
-		$addHomeworkSql = "INSERT INTO `homework_table` (`homework_id`, `class_id`, `title`, `description`, `due_date`) VALUES ('$homeworkID', '$classID', '$title', '$description', '$dueDate')";
+		$addHomeworkSql = "INSERT INTO `homework_table` (`homework_id`, `class_id`, `title`, `description`, `due_date`) VALUES ('$homeworkID', '$classID', '$title', '$correctedDescription', '$dueDate')";
 		$conn->query($addHomeworkSql);
 		//upload the files
 		include("file_handler.php");

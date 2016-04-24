@@ -124,7 +124,7 @@ if ($_POST) {
 
 	//email validation
 	if (!empty($email)) { //make sure its not empty
-		if (strlen($email <= 50)) { //makee sure the email is under 50 characters long
+		if (strlen($email) <= 50) { //makee sure the email is under 50 characters long
 			//filter_var is another PHP function that "filters" a string with a 
 			//specified filter, which in this case is the email filter. If the email
 			//is of a valid format then it will return true
@@ -158,14 +158,15 @@ if ($_POST) {
 
 	//if all the fields where fine then add the user to the database!
 	if ($formCorrect) {
+		$correctedEmail = str_replace("'", "''", $email);
 		if ($type == "pupil") {
 			//if they ant to be a pupil, add them to the pupil table
 			$addNewUserSql = "INSERT INTO `pupil_table` (`username`, `password`, `name`, `email`, `year`) 
-			VALUES ('$username', '$hashedPassword', '$name', '$email', '$option')";
+			VALUES ('$username', '$hashedPassword', '$name', '$correctedEmail', '$option')";
 		} else {
 			//if they want to be a teacher, add them to the teacher table
 			$addNewUserSql = "INSERT INTO `teacher_table` (`username`, `password`, `name`, `subject`, `email`) 
-			VALUES ('$username', '$hashedPassword', '$name', '$option', '$email')";
+			VALUES ('$username', '$hashedPassword', '$name', '$option', '$correctedEmail')";
 		}
 		//execute the query
 		$conn->query($addNewUserSql);

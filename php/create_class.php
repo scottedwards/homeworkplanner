@@ -12,7 +12,7 @@ if ($_POST) {
 	//class name
 	if (!empty($className)) { //make sure class name is not empty
 		//make sure $className is under 15 characters long
-		if (strlen($className > 15)) {
+		if (strlen($className) > 15) {
 			$errmsg[] = "Your class name must be less than 15 characters!";
 		}
 	} else {
@@ -23,7 +23,7 @@ if ($_POST) {
 	if (!empty($classID)) {
 		//make sure $classID is only made of letters and numbers (alnnum = alpha numeric)
 		if (ctype_alnum($classID)) {
-			if (strlen($classID <= 15)) { //make sure classID is less than 15 characters long
+			if (strlen($classID) <= 15) { //make sure classID is less than 15 characters long
 				//check class table to see if there is a class with ID = classID
 				$checkClassIDSql = "SELECT * FROM `class_table` WHERE (`class_id`) = ('$classID')";
 				$results = $conn->query($checkClassIDSql);
